@@ -2,6 +2,7 @@
 \usepackage{thaispec}
 \usepackage{graphicx}
 \usepackage{colortbl}
+\usepackage{tikz}
 
 \usetheme{Copenhagen}
 \usecolortheme{crane}
@@ -18,58 +19,50 @@
 
 \begin{frame}
     \frametitle{Problem}
-        \begin{figure}
-            \centering
-            \includegraphics[scale=0.13]{img/missing-station-aqi.png}
-        \end{figure}
+    \begin{tikzpicture}[overlay, remember picture]
+        \node at (7,-0.8) {\includegraphics[width=1.25\textwidth]{img/missing-station-aqi.png}};
+    \end{tikzpicture}
     \end{frame}
 
     \begin{frame}
         \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
         \begin{columns}
-            \begin{column}{0.42\textwidth}  
-                \includegraphics[width=1.2\textwidth]{img/region-selection-one-point.pdf}
-            \end{column}
             \begin{column}{0.5\textwidth}
-                \begin{equation}
+            กำหนดให้ $f(x,y)$ คือ ค่า AQI ที่พิกัด $(x,y)$:
+            \begin{block}{}
+              \[
                     f(x,y)=a+bx+cy+dxy
-               \end{equation}
+               \]   
+            \end{block}
 
-               เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ 
-            
-               \begin{equation}\label{solve-by-cramer-equation}
-                  AX = B  
-               \end{equation}
-               
-               โดยที่
-               
-               \begin{align*}
+               \begin{center}
+                   \includegraphics[width=\textwidth]{img/region-selection-one-point.pdf}
+               \end{center}
+            \end{column}
+            \begin{column}{0.4\textwidth}  
+            เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของ$AX = B$                
+            \[
                A
-               &=\begin{bmatrix}
+               =\begin{bmatrix}
                1 & x_1 & y_1 & x_1y_1\\
                1 & x_2 & y_2 & x_2y_2\\
                1 & x_3 & y_3 & x_3y_3\\
                1 & x_4 & y_4 & x_4y_4\\
+               \end{bmatrix},
+        \]
+        \[
+               X = \begin{bmatrix}
+                  a \\ b \\ c \\ d
                \end{bmatrix}
                ,
-               \\
-               X
-               &=\begin{bmatrix}
-                  a\\
-                  b\\
-                  c\\	
-                  d
-               \end{bmatrix}
-               ,
-               \quad
                B
                =\begin{bmatrix}
-                  f(x_1,y_1)\\
-                  f(x_2,y_2)\\
-                  f(x_3,y_3)\\
+                  f(x_1,y_1) \\
+                  f(x_2,y_2) \\
+                  f(x_3,y_3) \\
                   f(x_4,y_4)
                \end{bmatrix}
-        \end{align*}
+        \]
             \end{column}
             \end{columns}
 \end{frame}
