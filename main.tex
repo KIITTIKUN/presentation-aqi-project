@@ -1,8 +1,10 @@
 \documentclass[12pt,aspectratio=169]{beamer}
+\usefonttheme[onlymath]{serif}
 \usepackage{thaispec}
 \usepackage{graphicx}
 \usepackage{colortbl}
 \usepackage{tikz}
+\usepackage{xcolor}
 
 \usetheme{Copenhagen}
 \usecolortheme{crane}
@@ -40,7 +42,7 @@
                \end{center}
             \end{column}
             \begin{column}{0.4\textwidth}  
-            เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของ$AX = B$                
+            เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ $AX = B$  โดยที่              
             \[
                A
                =\begin{bmatrix}
@@ -132,16 +134,13 @@
 \end{theorem}
 \end{frame}
 
-\begin{frame}
-    \frametitle{ชุดข้อมูลจากฐานข้อมูล www.aqicn.org}
-\begin{example}
-    ให้จุด  \[P_t = (1.75387,0.24043)\]
-    
-    , $P_i=(x_i,y_i)$ และ $f(x_i,y_i)$ คือค่าดัชนีคุณภาพอากาศ ณ จุด $i$ โดยที่ $i=1,2,\ldots,10$
+\begin{frame}{ตัวอย่าง}
+    กำหนดให้  \[P_t = (1.75387,0.24043), \]
+%$P_i=(x_i,y_i)$ และ $f(x_i,y_i)$ คือค่าดัชนีคุณภาพอากาศ ณ จุด $i$ โดยที่ $i=1,2,\ldots,10$
     \begin{center}
         \begin{tabular}{lccc} 
         \hline
-       $P_i$ & ($x_i$,$y_i$) &  AQI \\
+       $P_i$ & ($x_i$,$y_i$) &  $f(x_i,y_i)$ \\
         \hline
         $P_1$ &$(1.75479,0.24063)$ &$74$\\
         $P_2$ &$(1.75516,0.24119)$ &$65$\\
@@ -156,7 +155,6 @@
         \hline
         \end{tabular}
     \end{center}
-\end{example}
 \end{frame}
 
 % \begin{frame}
@@ -196,176 +194,243 @@
 % \end{example}
 % \end{frame}
 
-\begin{frame}
-    \frametitle{การแบ่งกั้นบริเวณรอบจุดเป้าหมาย}
-    \begin{example}
+\begin{frame}{ตัวอย่าง}
+%    \frametitle{การแบ่งกั้นบริเวณรอบจุดเป้าหมาย}
         \begin{center}
             \begin{tabular}{lccc} 
             \hline
            $P_i$ & ($x_i$,$y_i$) &  บริเวณรอบจุดเป้าหมาย & $d(P_t,P_i)$\\
             \hline
-            \cellcolor{red}$P_1$ &\cellcolor{red}$(1.75479,0.24063)$ &\cellcolor{red}$NE(P_t)$  &\cellcolor{red}$9.37E-4$\\
+            \cellcolor{orange!30}$P_1$ &\cellcolor{orange!30}$(1.75479,0.24063)$ &\cellcolor{orange!30}$NE(P_t)$  &\cellcolor{orange!30}$9.37E-4$\\
             $P_2$ &$(1.75516,0.24119)$ &$NE(P_t)$&$1.49E-3$\\
             \hline
-            \cellcolor{red}$P_3$ &\cellcolor{red}$(1.75378,0.24084)$ &\cellcolor{red}$NW(P_t)$ &\cellcolor{red}$4.18E-4$\\
+            \cellcolor{orange!30}$P_3$ &\cellcolor{orange!30}$(1.75378,0.24084)$ &\cellcolor{orange!30}$NW(P_t)$ &\cellcolor{orange!30}$4.18E-4$\\
             $P_4$ &$(1.75296,0.24054)$ &$NW(P_t)$&$9.23E-4$\\
             \hline
-            \cellcolor{red}$P_5$ &\cellcolor{red}$(1.75319,0.23996)$ &\cellcolor{red}$SW(P_t)$&\cellcolor{red}$8.25E-4$\\
+            \cellcolor{orange!30}$P_5$ &\cellcolor{orange!30}$(1.75319,0.23996)$ &\cellcolor{orange!30}$SW(P_t)$&\cellcolor{orange!30}$8.25E-4$\\
             $P_6$ &$(1.75292,0.23946)$ &$SW(P_t)$&$1.36E-3$\\
             \hline
-            \cellcolor{red}$P_7$ &\cellcolor{red}$(1.75403,0.24010)$ &\cellcolor{red}$SE(P_t)$&\cellcolor{red}$3.74E-4$\\
+            \cellcolor{orange!30}$P_7$ &\cellcolor{orange!30}$(1.75403,0.24010)$ &\cellcolor{orange!30}$SE(P_t)$&\cellcolor{orange!30}$3.74E-4$\\
             $P_8$ &$(1.75396,0.23972)$ &$SE(P_t)$&$7.15E-4$\\
             $P_9$ &$(1.75399,0.23909)$ &$SE(P_t)$&$1.34E-3$\\
             $P_{10}$ &$(1.75570,0.24037)$ &$SE(P_t)$&$1.83E-3$\\
             \hline
             \end{tabular}
         \end{center}
-\end{example}
 \end{frame}
 
-\begin{frame}
-\frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
+\begin{frame}{ตัวอย่าง}
 
-	ให้ $P_i=(x_i,y_i) \in \mathbb{R}^2$ \text{และ}  $m_{ij} =\left(\dfrac{y_j-y_i}{x_j-x_i} \right)$ \text{ และ } $c_{ij} = y-m_{ij}x $ สำหรับ $i,j = 1,3,5,7$ และ $i \neq  j$ 
-ถ้าเงื่อนไขต่อไปนี้เป็นจริง 
-\begin{enumerate}
-\item \label{condition1} $x_{1}  \neq x_{3} \neq x_{5} \neq x_{7}$
-\item \label{condition2} $y_5 - m_{13}x_5 + c_{13} \neq 0$
-\item \label{condition3} $y_7 - m_{13}x_7 + c_{13} \neq 0$
-\item \label{condition4} $y_7 - m_{57}x_7 + c_{57} \neq 0$
-\item \label{condition5} $y_7 - m_{17}x_7 + c_{17} \neq 0$
-\end{enumerate}
-แล้ว $P_1,P_3,P_5$ และ $P_7$ เป็นจุดยอดของรูปสี่เหลี่ยม
-\end{frame}
-
-\begin{frame}
-    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-        \textbf{เงื่อนไขข้อที่ $1$:} พิจารณา $1.75479 \neq 1.75378 \neq 1.75319 \neq 1.75403$
-
-ดังนั้น  $x_1 \neq x_3 \neq x_5 \neq x_7$
-
-\vspace{1cm}
-\textbf{เงื่อนไขข้อที่ $2$:} พิจารณา
-\begin{align*} 
-m_{ij} &=\left(\dfrac{y_j-y_i}{x_j-x_i} \right)\\
-m_{13} &=\left(\dfrac{y_3-y_1}{x_3-x_1} \right)\\
-       &=\left(\dfrac{0.24084-0.24063}{1.75378-1.75479} \right)\\
-       &=-0.20686
-\end{align*}
-\end{frame}
-
-\begin{frame}
-    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-\begin{align*} 
-    c_{ij} &= y_1-m_{ij}x_1\\ 
-    c_{13} &= y_1-m_{13}x_1\\
-           &= 0.24043798-(-0.20683489)(1.75387657)\\
-           &= 0.60320085
-\end{align*}
-\begin{align*} 
-    y_5 - m_{13}x_5 + c_{13} & = 0.23996681 -(-0.20683489)(1.75319981) + 0.60320085\\
-   & = 1.20579055
-\end{align*}
-เนื่องจาก $1.20579055 \neq 0$
-
-ดังนั้น $y_5 - m_{13}x_5 + c_{13} \neq 0 $
-\end{frame}
-
-\begin{frame}
-    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-    ในทำนองเดียวกันเงื่อนไขข้อที่ $3,4$ และ $5$ ได้ผลลัพธ์ดังนี้
-% \begin{align*}
-%     1.20609777 &\neq 0\\
-%     -4.8236405 &\neq 0\\
-%     -1.04282178 &\neq 0
-%     \end{align*}
+พิจารณา $P_t = (x_t,y_t) =  (1.75387, 0.24043)$, $P_i = (x_i, y_i)$ โดยที่
+\begin{columns}
+\column{0.45\textwidth}
 \begin{align*}
-    y_7 - m_{13}x_7 + c_{13} &\neq 0\\
-    y_7 - m_{57}x_7 + c_{57} &\neq 0\\
-    y_7 - m_{17}x_7 + c_{17} &\neq 0
-    \end{align*}
+P_1 & = (1.75479, 0.24063) \in NE(P_t), \\ 
+P_3 & = (1.75378, 0.24084) \in NW(P_t),\\
+P_5 & = (1.75319, 0.23996) \in SW(P_t),\\
+P_7 & = (1.75403, 0.24010)  \in SE(P_t), 
+\end{align*}
+\[m_{ij} = \dfrac{y_j-y_i}{x_j-x_i}, \]
+\[c_{ij} = y_i - m_{ij}x_i,\]    
+\column{0.45\textwidth} 
+\begin{block}{}\
+\textbf{จะได้ว่า} 
+\begin{enumerate}
+    \item $x_1 \neq x_3 \neq x_5 \neq x_7$
+    \item $y_3 - m_{12}x_3 - c_{12} \neq 0$
+    \item $y_4 - m_{12}x_4 - c_{12} \neq 0$
+    \item $y_4 - m_{23}x_4 - c_{23} \neq 0$
+    \item $y_4 - m_{13}x_4 - c_{13} \neq 0$
+\end{enumerate}     
+\end{block} 
+\end{columns}
 
-    \vspace{0.5cm}
-    ดังนั้น เราสามารถสร้างสี่เหลี่ยมที่มีจุด $P_1,P_3,P_5$ และ $P_7$ เป็นจุดยอดได้
+
 \end{frame}
 
-\begin{frame}
-    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
-    \begin{align*}
-        P_t &= (x_t,y_t)=(1.75387,0.24043) \\
-        P_1& =(x_1,y_1)=(1.75479,0.24063) \text{ และ } f(P_1) = 74 \\
-        P_3&=(x_3,y_3)=(1.75378,0.24084) \text{ และ } f(P_3) = 63\\ 
-        P_5&=(x_5,y_5)=(1.75319,0.23996) \text{ และ } f(P_5) = 78\\
-        P_7&=(x_7,y_7)=(1.75403,0.24010) \text{ และ } f(P_7) = 89
-     \end{align*}
-    \begin{equation}\label{alternative-bilinear-interpolation7}
-        f(x_t,y_t)=a+bx_t+cy_t+dx_ty_t
-   \end{equation}
-   
-   เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ 
-   
-   \begin{equation}\label{linear-system-equation}
-      AX = B  
-   \end{equation}
-   
-   โดยที่
-   
-   \begin{equation*}
-   A
-   =\begin{bmatrix}
-   1 & x_1 & y_1 & x_1y_1\\
-   1 & x_3 & y_3 & x_3y_3\\
-   1 & x_5 & y_5 & x_5y_5\\
-   1 & x_7 & y_7 & x_7y_7\\
-   \end{bmatrix}
-   ,
-   \quad
-   X
-   =\begin{bmatrix}
-      a\\
-      b\\
-      c\\	
-      d
-   \end{bmatrix}
-   ,
-   \quad
-   B
-   =\begin{bmatrix}
-      f(x_1,y_1)\\
-      f(x_3,y_3)\\
-      f(x_5,y_5)\\
-      f(x_7,y_7)
-   \end{bmatrix}
-   \end{equation*}
+%\begin{frame}
+%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
+%        \textbf{เงื่อนไขข้อที่ $1$:} พิจารณา $1.75479 \neq 1.75378 \neq 1.75319 \neq 1.75403$
+%
+%ดังนั้น  $x_1 \neq x_3 \neq x_5 \neq x_7$
+%
+%\vspace{1cm}
+%\textbf{เงื่อนไขข้อที่ $2$:} พิจารณา
+%\begin{align*} 
+%m_{ij} &=\left(\dfrac{y_j-y_i}{x_j-x_i} \right)\\
+%m_{13} &=\left(\dfrac{y_3-y_1}{x_3-x_1} \right)\\
+%       &=\left(\dfrac{0.24084-0.24063}{1.75378-1.75479} \right)\\
+%       &=-0.20686
+%\end{align*}
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
+%\begin{align*} 
+%    c_{ij} &= y_1-m_{ij}x_1\\ 
+%    c_{13} &= y_1-m_{13}x_1\\
+%           &= 0.24043798-(-0.20683489)(1.75387657)\\
+%           &= 0.60320085
+%\end{align*}
+%\begin{align*} 
+%    y_5 - m_{13}x_5 + c_{13} & = 0.23996681 -(-0.20683489)(1.75319981) + 0.60320085\\
+%   & = 1.20579055
+%\end{align*}
+%เนื่องจาก $1.20579055 \neq 0$
+%
+%ดังนั้น $y_5 - m_{13}x_5 + c_{13} \neq 0 $
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
+%    ในทำนองเดียวกันเงื่อนไขข้อที่ $3,4$ และ $5$ ได้ผลลัพธ์ดังนี้
+%% \begin{align*}
+%%     1.20609777 &\neq 0\\
+%%     -4.8236405 &\neq 0\\
+%%     -1.04282178 &\neq 0
+%%     \end{align*}
+%\begin{align*}
+%    y_7 - m_{13}x_7 + c_{13} &\neq 0\\
+%    y_7 - m_{57}x_7 + c_{57} &\neq 0\\
+%    y_7 - m_{17}x_7 + c_{17} &\neq 0
+%    \end{align*}
+%
+%    \vspace{0.5cm}
+%    ดังนั้น เราสามารถสร้างสี่เหลี่ยมที่มีจุด $P_1,P_3,P_5$ และ $P_7$ เป็นจุดยอดได้
+%\end{frame}
+
+\begin{frame}{ตัวอย่าง}
+        \begin{columns}
+            \begin{column}{0.6\textwidth}
+\begin{align*}
+f(P_1) & = f(x_1,y_1) = f(1.75479, 0.24063) = 74, \\ 
+f(P_3) & = f(x_3,y_3) = (1.75378, 0.24084) = 63,\\
+f(P_5) & = f(x_5,y_5) = f(1.75319, 0.23996) = 78,\\
+f(P_7) & = f(x_7,y_7) = f(1.75403, 0.24010) = 89, 
+\end{align*}
+จะได้ว่า
+%\vspace{-7mm}
+            \begin{block}{}
+            \vspace{-3mm}
+              \begin{align*}
+                 f(P_t) & = f(x_t,y_t) \\
+                        & = f(1.75387, 0.24043)\\
+                        & = a+bx_t+cy_t+dx_ty_t \\
+                        & \approx 75.83
+              \end{align*}  
+            \end{block}
+
+            \end{column}
+            \begin{column}{0.35\textwidth} 
+
+{\color{orange!90!black}%
+เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ $AX = B$  โดยที่              
+            \[
+               A
+               =\begin{bmatrix}
+               1 & x_1 & y_1 & x_1y_1\\
+               1 & x_3 & y_3 & x_3y_3\\
+               1 & x_5 & y_5 & x_5y_5\\
+               1 & x_7 & y_7 & x_7y_7\\
+               \end{bmatrix},
+        \]
+        \[
+               X = \begin{bmatrix}
+                  a \\ b \\ c \\ d
+               \end{bmatrix}
+               ,
+               B
+               =\begin{bmatrix}
+                  f(x_1,y_1) \\
+                  f(x_3,y_3) \\
+                  f(x_5,y_5) \\
+                  f(x_7,y_7)
+               \end{bmatrix}
+        \]
+}
+            \end{column}
+
+            \end{columns}    
 \end{frame}
 
-\begin{frame}
-    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
-   จากสมการ \eqref{linear-system-equation} จะได้ผลเฉลย $a,b,c$ และ $d$ ดังนี้ 
-   \begin{align*}
-    a&=-30437137.8977641\\
-    b&=17339545.86913783\\
-    c&=126855602.2007634
-   \end{align*}
-และ 
-\begin{equation*}
-d=-72267353.90469953
-\end{equation*}
-ตามลำดับ
-\vspace{0.5cm}
-
-\hspace{0.5cm} นำ $a,b,c$ และ $d$ แทนลงในสมการ \eqref{alternative-bilinear-interpolation7} จะได้ว่า $f(x_t,y_t) \approx 75.83$
-
-ดังนั้น ณ จุดเป้าหมาย  $P_t$ มีค่าประมาณของดัชนีคุณภาพอากาศเท่ากับ $75.83$ 
-\end{frame}
+%\begin{frame}
+%    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
+%    \begin{align*}
+%        P_t &= (x_t,y_t)=(1.75387,0.24043) \\
+%        P_1& =(x_1,y_1)=(1.75479,0.24063) \text{ และ } f(P_1) = 74 \\
+%        P_3&=(x_3,y_3)=(1.75378,0.24084) \text{ และ } f(P_3) = 63\\ 
+%        P_5&=(x_5,y_5)=(1.75319,0.23996) \text{ และ } f(P_5) = 78\\
+%        P_7&=(x_7,y_7)=(1.75403,0.24010) \text{ และ } f(P_7) = 89
+%     \end{align*}
+%    \begin{equation}\label{alternative-bilinear-interpolation7}
+%        f(x_t,y_t)=a+bx_t+cy_t+dx_ty_t
+%   \end{equation}
+%   
+%   เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ 
+%   
+%   \begin{equation}\label{linear-system-equation}
+%      AX = B  
+%   \end{equation}
+%   
+%   โดยที่
+%   
+%   \begin{equation*}
+%   A
+%   =\begin{bmatrix}
+%   1 & x_1 & y_1 & x_1y_1\\
+%   1 & x_3 & y_3 & x_3y_3\\
+%   1 & x_5 & y_5 & x_5y_5\\
+%   1 & x_7 & y_7 & x_7y_7\\
+%   \end{bmatrix}
+%   ,
+%   \quad
+%   X
+%   =\begin{bmatrix}
+%      a\\
+%      b\\
+%      c\\	
+%      d
+%   \end{bmatrix}
+%   ,
+%   \quad
+%   B
+%   =\begin{bmatrix}
+%      f(x_1,y_1)\\
+%      f(x_3,y_3)\\
+%      f(x_5,y_5)\\
+%      f(x_7,y_7)
+%   \end{bmatrix}
+%   \end{equation*}
+%\end{frame}
+%
+%\begin{frame}
+%    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
+%   จากสมการ \eqref{linear-system-equation} จะได้ผลเฉลย $a,b,c$ และ $d$ ดังนี้ 
+%   \begin{align*}
+%    a&=-30437137.8977641\\
+%    b&=17339545.86913783\\
+%    c&=126855602.2007634
+%   \end{align*}
+%และ 
+%\begin{equation*}
+%d=-72267353.90469953
+%\end{equation*}
+%ตามลำดับ
+%\vspace{0.5cm}
+%
+%\hspace{0.5cm} นำ $a,b,c$ และ $d$ แทนลงในสมการ \eqref{alternative-bilinear-interpolation7} จะได้ว่า $f(x_t,y_t) \approx 75.83$
+%
+%ดังนั้น ณ จุดเป้าหมาย  $P_t$ มีค่าประมาณของดัชนีคุณภาพอากาศเท่ากับ $75.83$ 
+%\end{frame}
 
 \begin{frame}
     \frametitle{ค่าคลาดเคลื่อน}
-        \begin{center}
-            \begin{figure}
-                \includegraphics[scale=0.3]{img/error-test.jpg}
-            \end{figure}
-        \end{center}
+
+    \begin{tikzpicture}[overlay, remember picture]
+        \node at (7,-2.8) {\includegraphics[width=1.25\textwidth]{img/error-test.jpg}};
+        \node[fill=white, rounded corners=0.1cm] (p) at (9,0) {\Huge \texttt{117}};
+        \draw[->, white, line width=1.5mm] (p) -- (6.1,-0.8);
+    \end{tikzpicture}    
     \end{frame}
 
 \begin{frame}
