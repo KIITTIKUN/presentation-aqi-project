@@ -157,45 +157,7 @@
     \end{center}
 \end{frame}
 
-% \begin{frame}
-%     \frametitle{การแบ่งกั้นบริเวณรอบจุดเป้าหมาย}
-%         \begin{definition}
-%             กำหนดให้จุดเป้าหมาย คือ $P_t=(x_t,y_t) \in \mathbb{R}^2$ และกำหนดจุดที่ทราบค่าดัชนีคุณภาพอากาศที่อยู่รอบบริเวณจุดเป้าหมาย คือ $P_i=(x_i,y_i) \in \mathbb{R}^2$ สำหรับ $i=1,2,\ldots,n$ เรานิยามบริเวณรอบจุดเป้าหมาย $P_t$ ดังต่อไปนี้
-%             \begin{align*}
-%                 NE(P_t) &= \{(x_{i} , y_{i}) \in \mathbb{R}^2 | x_{i} > x_{t} \text{ และ } y_{i} > y_{t}\}\\
-%                 NW(P_t) &= \{(x_{i} , y_{i}) \in \mathbb{R}^2 | x_{i} < x_{t} \text{ และ } y_{i} > y_{t}\}\\
-%                 SW(P_t) &= \{(x_{i} , y_{i}) \in \mathbb{R}^2 | x_{i} < x_{t} \text{ และ } y_{i} < y_{t}\} \\
-%                 SE(P_t) &= \{(x_{i} , y_{i}) \in \mathbb{R}^2 | x_{i} > x_{t} \text{ และ } y_{i} < y_{t}\}
-%             \end{align*}
-%             \end{definition}
-%     \end{frame}
-    
-% \begin{frame}
-%     \frametitle{การแบ่งกั้นบริเวณรอบจุดเป้าหมาย}
-%     \begin{example}
-%         \begin{center}
-%             \begin{tabular}{lccc} 
-%             \hline
-%            $P_i$ & ($x_i$,$y_i$) &  บริเวณรอบจุดเป้าหมาย & $d(P_t,P_i)$\\
-%             \hline
-%             $P_1$ &$(1.75479291,0.24063575)$ &$NE(P_t)$  &$9.37439E-4$\\
-%             $P_2$ &$(1.75516423,0.2411995)$ &$NE(P_t)$&$1.49599E-3$\\
-%             $P_3$ &$(1.75378075,0.24084513)$ &$NW(P_t)$ &$4.18273E-4$\\
-%             $P_4$ &$(1.75296025,0.24054795)$ &$NW(P_t)$&$9.22895E-4$\\
-%             $P_5$ &$(1.75319981,0.23996681)$ &$SW(P_t)$&$8.24624E-4$\\
-%             $P_6$ &$(1.75292431,0.23946067)$ &$SW(P_t)$&$1.36453E-3$\\
-%             $P_7$ &$(1.75403828,0.24010061)$ &$SE(P_t)$&$3.74124E-4$\\
-%             $P_8$ &$(1.75396042,0.23972831)$ &$SE(P_t)$&$7.146063E-4$\\
-%             $P_9$ &$(1.75399636,0.23909994)$ &$SE(P_t)$&$1.34339E-3$\\
-%             $P_{10}$ &$(1.75570923,0.24037401)$ &$SE(P_t)$&$1.83378E-3$\\
-%             \hline
-%             \end{tabular}
-%         \end{center}
-% \end{example}
-% \end{frame}
-
 \begin{frame}{ตัวอย่าง}
-%    \frametitle{การแบ่งกั้นบริเวณรอบจุดเป้าหมาย}
         \begin{center}
             \begin{tabular}{lccc} 
             \hline
@@ -220,7 +182,6 @@
 \end{frame}
 
 \begin{frame}{ตัวอย่าง}
-
 พิจารณา $P_t = (x_t,y_t) =  (1.75387, 0.24043)$, $P_i = (x_i, y_i)$ โดยที่
 \begin{columns}
 \column{0.45\textwidth}
@@ -247,57 +208,6 @@ P_7 & = (1.75403, 0.24010)  \in SE(P_t),
 
 
 \end{frame}
-
-%\begin{frame}
-%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-%        \textbf{เงื่อนไขข้อที่ $1$:} พิจารณา $1.75479 \neq 1.75378 \neq 1.75319 \neq 1.75403$
-%
-%ดังนั้น  $x_1 \neq x_3 \neq x_5 \neq x_7$
-%
-%\vspace{1cm}
-%\textbf{เงื่อนไขข้อที่ $2$:} พิจารณา
-%\begin{align*} 
-%m_{ij} &=\left(\dfrac{y_j-y_i}{x_j-x_i} \right)\\
-%m_{13} &=\left(\dfrac{y_3-y_1}{x_3-x_1} \right)\\
-%       &=\left(\dfrac{0.24084-0.24063}{1.75378-1.75479} \right)\\
-%       &=-0.20686
-%\end{align*}
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-%\begin{align*} 
-%    c_{ij} &= y_1-m_{ij}x_1\\ 
-%    c_{13} &= y_1-m_{13}x_1\\
-%           &= 0.24043798-(-0.20683489)(1.75387657)\\
-%           &= 0.60320085
-%\end{align*}
-%\begin{align*} 
-%    y_5 - m_{13}x_5 + c_{13} & = 0.23996681 -(-0.20683489)(1.75319981) + 0.60320085\\
-%   & = 1.20579055
-%\end{align*}
-%เนื่องจาก $1.20579055 \neq 0$
-%
-%ดังนั้น $y_5 - m_{13}x_5 + c_{13} \neq 0 $
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{การตรวจสอบเงื่ิอนไขจุดยอดของสี่เหลี่ยม}
-%    ในทำนองเดียวกันเงื่อนไขข้อที่ $3,4$ และ $5$ ได้ผลลัพธ์ดังนี้
-%% \begin{align*}
-%%     1.20609777 &\neq 0\\
-%%     -4.8236405 &\neq 0\\
-%%     -1.04282178 &\neq 0
-%%     \end{align*}
-%\begin{align*}
-%    y_7 - m_{13}x_7 + c_{13} &\neq 0\\
-%    y_7 - m_{57}x_7 + c_{57} &\neq 0\\
-%    y_7 - m_{17}x_7 + c_{17} &\neq 0
-%    \end{align*}
-%
-%    \vspace{0.5cm}
-%    ดังนั้น เราสามารถสร้างสี่เหลี่ยมที่มีจุด $P_1,P_3,P_5$ และ $P_7$ เป็นจุดยอดได้
-%\end{frame}
 
 \begin{frame}{ตัวอย่าง}
         \begin{columns}
@@ -352,76 +262,6 @@ f(P_7) & = f(x_7,y_7) = f(1.75403, 0.24010) = 89,
 
             \end{columns}    
 \end{frame}
-
-%\begin{frame}
-%    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
-%    \begin{align*}
-%        P_t &= (x_t,y_t)=(1.75387,0.24043) \\
-%        P_1& =(x_1,y_1)=(1.75479,0.24063) \text{ และ } f(P_1) = 74 \\
-%        P_3&=(x_3,y_3)=(1.75378,0.24084) \text{ และ } f(P_3) = 63\\ 
-%        P_5&=(x_5,y_5)=(1.75319,0.23996) \text{ และ } f(P_5) = 78\\
-%        P_7&=(x_7,y_7)=(1.75403,0.24010) \text{ และ } f(P_7) = 89
-%     \end{align*}
-%    \begin{equation}\label{alternative-bilinear-interpolation7}
-%        f(x_t,y_t)=a+bx_t+cy_t+dx_ty_t
-%   \end{equation}
-%   
-%   เมื่อ $a,b,c$ และ $d$ คือผลเฉลยของสมการ 
-%   
-%   \begin{equation}\label{linear-system-equation}
-%      AX = B  
-%   \end{equation}
-%   
-%   โดยที่
-%   
-%   \begin{equation*}
-%   A
-%   =\begin{bmatrix}
-%   1 & x_1 & y_1 & x_1y_1\\
-%   1 & x_3 & y_3 & x_3y_3\\
-%   1 & x_5 & y_5 & x_5y_5\\
-%   1 & x_7 & y_7 & x_7y_7\\
-%   \end{bmatrix}
-%   ,
-%   \quad
-%   X
-%   =\begin{bmatrix}
-%      a\\
-%      b\\
-%      c\\	
-%      d
-%   \end{bmatrix}
-%   ,
-%   \quad
-%   B
-%   =\begin{bmatrix}
-%      f(x_1,y_1)\\
-%      f(x_3,y_3)\\
-%      f(x_5,y_5)\\
-%      f(x_7,y_7)
-%   \end{bmatrix}
-%   \end{equation*}
-%\end{frame}
-%
-%\begin{frame}
-%    \frametitle{การประมาณค่าเชิงเส้นคู่แบบทางเลือก}
-%   จากสมการ \eqref{linear-system-equation} จะได้ผลเฉลย $a,b,c$ และ $d$ ดังนี้ 
-%   \begin{align*}
-%    a&=-30437137.8977641\\
-%    b&=17339545.86913783\\
-%    c&=126855602.2007634
-%   \end{align*}
-%และ 
-%\begin{equation*}
-%d=-72267353.90469953
-%\end{equation*}
-%ตามลำดับ
-%\vspace{0.5cm}
-%
-%\hspace{0.5cm} นำ $a,b,c$ และ $d$ แทนลงในสมการ \eqref{alternative-bilinear-interpolation7} จะได้ว่า $f(x_t,y_t) \approx 75.83$
-%
-%ดังนั้น ณ จุดเป้าหมาย  $P_t$ มีค่าประมาณของดัชนีคุณภาพอากาศเท่ากับ $75.83$ 
-%\end{frame}
 
 \begin{frame}
     \frametitle{ค่าคลาดเคลื่อน}
