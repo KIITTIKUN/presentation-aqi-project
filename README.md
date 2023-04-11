@@ -1,2 +1,0 @@
-# presentation-aqi-project
- 
