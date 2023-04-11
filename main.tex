@@ -5,6 +5,7 @@
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{qrcode}
 
 \usetheme{Copenhagen}
 \usecolortheme{crane}
@@ -136,7 +137,6 @@
 
 \begin{frame}{ตัวอย่าง}
     กำหนดให้  \[P_t = (1.75387,0.24043), \]
-%$P_i=(x_i,y_i)$ และ $f(x_i,y_i)$ คือค่าดัชนีคุณภาพอากาศ ณ จุด $i$ โดยที่ $i=1,2,\ldots,10$
     \begin{center}
         \begin{tabular}{lccc} 
         \hline
@@ -198,10 +198,10 @@ P_7 & = (1.75403, 0.24010)  \in SE(P_t),
 \textbf{จะได้ว่า} 
 \begin{enumerate}
     \item $x_1 \neq x_3 \neq x_5 \neq x_7$
-    \item $y_3 - m_{12}x_3 - c_{12} \neq 0$
-    \item $y_4 - m_{12}x_4 - c_{12} \neq 0$
-    \item $y_4 - m_{23}x_4 - c_{23} \neq 0$
-    \item $y_4 - m_{13}x_4 - c_{13} \neq 0$
+    \item $y_5 - m_{13}x_5 - c_{13} \neq 0$
+    \item $y_7 - m_{13}x_7 - c_{13} \neq 0$
+    \item $y_7 - m_{35}x_7 - c_{35} \neq 0$
+    \item $y_7 - m_{15}x_7 - c_{15} \neq 0$
 \end{enumerate}     
 \end{block} 
 \end{columns}
@@ -214,7 +214,7 @@ P_7 & = (1.75403, 0.24010)  \in SE(P_t),
             \begin{column}{0.6\textwidth}
 \begin{align*}
 f(P_1) & = f(x_1,y_1) = f(1.75479, 0.24063) = 74, \\ 
-f(P_3) & = f(x_3,y_3) = (1.75378, 0.24084) = 63,\\
+f(P_3) & = f(x_3,y_3) = f(1.75378, 0.24084) = 63,\\
 f(P_5) & = f(x_5,y_5) = f(1.75319, 0.23996) = 78,\\
 f(P_7) & = f(x_7,y_7) = f(1.75403, 0.24010) = 89, 
 \end{align*}
@@ -268,50 +268,35 @@ f(P_7) & = f(x_7,y_7) = f(1.75403, 0.24010) = 89,
 
     \begin{tikzpicture}[overlay, remember picture]
         \node at (7,-2.8) {\includegraphics[width=1.25\textwidth]{img/error-test.jpg}};
+    \end{tikzpicture}    
+    \end{frame}
+
+\begin{frame}{ค่าคลาดเคลื่อน}
+
+    \begin{tikzpicture}[overlay, remember picture]
+        \node at (7,-2.8) {\includegraphics[width=1.25\textwidth]{img/error-test.jpg}};
         \node[fill=white, rounded corners=0.1cm] (p) at (9,0) {\Huge \texttt{117}};
         \draw[->, white, line width=1.5mm] (p) -- (6.1,-0.8);
     \end{tikzpicture}    
     \end{frame}
 
-\begin{frame}
-    \frametitle{ค่าความคลาดเคลื่อน}
-\begin{center}
-    \begin{tabular}{lcc} 
-        \hline
-        $P_i$ & ละติจูด & ลองจิจูด \\
-        \hline
-        1 & 13.90451806 & 100.5277991   \\
-        2 & 13.77523348 & 100.5695343  \\
-        3 & 13.72971342 & 100.5365753 \\
-        4 & 13.76206192 & 100.5506516  \\
-        5 & 13.77640054 & 100.5697083\\
-        6 & 13.05272355 & 101.1030755\\
-        7 & 13.72954666 & 100.5363191 \\
-        8 & 13.72988017 & 100.5364923 \\
-        9 & 18.25021998 & 99.76271963\\
-        10 & 17.16178591 & 104.1341291 \\
-        \hline
-        \end{tabular}
-    \end{center}
-\end{frame}
 
-\begin{frame}
-    \frametitle{ค่าความคลาดเคลื่อน}
+\begin{frame}{ค่าคลาดเคลื่อน}
         \begin{center}
-        \begin{tabular}{lccccc} 
+        \begin{tabular}{lcccccc} 
         \hline
-        $P_i$ & ค่าจริง &ค่าประมาณ &  ค่าคาดเคลื่อน & ร้อยละค่าคลาดเคลื่อน\\
+        $P_i$ & $(x_i,y_i)$&AQI & $f(x_i,y_i)$ &  $E_{abs}$ & $\varepsilon_t$\\
         \hline
-        1 & 152 & 139.46   &12.54 &8.25\% \\
-        2 &124 & 117.01   &6.99  &5.64\% \\
-        3  &127   & 137.5   &10.5  &8.27\% \\
-        4  &122  & 108.35   &13.65 &11.19\% \\
-        5 &129 & 104.56   &24.44 &18.95\% \\
-        6  &127  & 121.15   &5.85  &4.61\% \\
-        7&152 & 131.48   &20.52 &13.50\% \\
-        8  &152 & 138.13   &13.87 &9.13\% \\
-        9 &89 & 104.83   &15.83 &17.79\% \\
-        10 &97 & 150.97   &53.97 &55.64\% \\
+        1 & (13.90451806 , 100.5277991)   & 152 & 139.46   &12.54 &8.25\% \\
+        2 & (13.77523348 , 100.5695343)  &124 & 117.01   &6.99  &5.64\% \\
+        3 & (13.72971342 , 100.5365753) &127   & 137.5   &10.5  &8.27\% \\
+        4  & (13.76206192 , 100.5506516)  &122  & 108.35   &13.65 &11.19\% \\
+        5 & (13.77640054 , 100.5697083) &129 & 104.56   &24.44 &18.95\% \\
+        6  & (13.05272355 , 101.1030755) &127  & 121.15   &5.85  &4.61\% \\
+        7& (13.72954666 , 100.5363191) &152 & 131.48   &20.52 &13.50\% \\
+        8 &  (13.72988017 , 100.5364923) &152 & 138.13   &13.87 &9.13\% \\
+        9 & (18.25021998 , 99.76271963) &89 & 104.83   &15.83 &17.79\% \\
+        10 & (17.16178591 , 104.1341291) &97 & 150.97   &53.97 &55.64\% \\
         \hline
         \end{tabular}
     \end{center}
@@ -327,7 +312,16 @@ f(P_7) & = f(x_7,y_7) = f(1.75403, 0.24010) = 89,
         \end{center}
     \end{frame}
 
-\begin{frame}
+    \begin{frame}{Use case}
+            \begin{center}
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=\textwidth]{img/web-app-click.jpeg}
+                \end{figure}
+            \end{center}
+        \end{frame}    
+
+\begin{frame}{Tech Stack}
 \frametitle{Tech Stack}
     \begin{center}
         \begin{figure}
